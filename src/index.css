@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* hanya untuk preview theme color */
+:root {
+  --color-primary: #0ea5e9;
+  --color-bg: #ffffff;
+  --color-text: #0f172a;
+}
+
+/* Variabel default */
+@theme {
+  --color-primary: #0ea5e9;
+  --color-bg: #ffffff;
+  --color-text: #0f172a;
+}
+
+/* Variabel untuk dark mode */
+.dark {
+  --color-primary: #F4D160;
+  --color-bg: #0f172a;
+  --color-text: #f8fafc;
+}
