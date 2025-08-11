@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import './index.css'
+import { HeroParallax } from './components/ui/hero-parallax.tsx'
+import project from './data/project.json'
+import { HeroHighlight } from './components/ui/hero-higlight.tsx';
 
 const App = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -90,11 +93,7 @@ const App = () => {
                 ))}
                 <button
                   onClick={toggleTheme}
-                  className="px-3 py-1 rounded border"
-                  style={{
-                    borderColor: "var(--color-primary)",
-                    color: "var(--color-primary)"
-                  }}
+                  className="px-3 py-1 rounded-lg border border-gray-300"
                 >
                   {isDark ? "☀️" : "🌙"}
                 </button>
@@ -141,37 +140,41 @@ const App = () => {
         </div>
       </nav>
 
+      <HeroParallax products={project} />
+
       {/* Hero Section */}
-      <section id="home" className="pt-16 min-h-screen flex items-center bg-primary/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-text mb-6">
-              <span className="gradient-text">DevLab</span>
-              <br />
-              <span className="text-3xl md:text-4xl text-text">Adi Multi Digital</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text mb-8 max-w-3xl mx-auto">
-              Your trusted software agent for developing and delivering custom systems and applications
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => scrollTo('portfolio')}
-                className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/70 transition-colors inline-flex items-center justify-center"
-              >
-                View Our Work
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
-              <button
-                onClick={() => scrollTo('contact')}
-                className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-colors"
-              >
-                Get In Touch
-              </button>
+      <section id="home" className="pt-16 min-h-screen flex items-center">
+        <HeroHighlight>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="text-center">
+              <h1 className="text-5xl md:text-7xl font-bold text-text mb-6">
+                <span className="gradient-text">DevLab</span>
+                <br />
+                <span className="text-3xl md:text-4xl text-text">Adi Multi Digital</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-text mb-8 max-w-3xl mx-auto">
+                Your trusted software agent for developing and delivering custom systems and applications
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => scrollTo('portfolio')}
+                  className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/70 transition-colors inline-flex items-center justify-center"
+                >
+                  View Our Work
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <button
+                  onClick={() => scrollTo('contact')}
+                  className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-colors"
+                >
+                  Get In Touch
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </HeroHighlight>
       </section>
 
       {/* About Section */}
@@ -235,7 +238,7 @@ const App = () => {
               {
                 title: 'Web Development',
                 description: 'Custom web applications built with modern technologies and frameworks',
-                icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9'
+                icon: 'M3 4h18v16H3z M3 7h18 M6 11h12 M6 14h8 M6 17h10'
               },
               {
                 title: 'Mobile Development',
@@ -273,49 +276,14 @@ const App = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'E-Sign Application',
-                description: 'Digital signature solution for secure document signing and verification',
-                tags: ['Laravel', 'React/Vue.js', 'Digital Certificates'],
-                demoUrl: 'https://demo-esign.devlab-amd.com',
-                icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
-                bgColor: 'bg-blue-50',
-                iconColor: 'text-primary'
-              },
-              {
-                title: 'Tracer Study Survey',
-                description: 'Comprehensive survey system for university alumni tracking and analysis',
-                tags: ['Laravel', 'React/Vue.js', 'MySQL', 'Analytics Dashboard'],
-                demoUrl: 'https://demo-tracer.devlab-amd.com',
-                icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z',
-                bgColor: 'bg-green-50',
-                iconColor: 'text-green-600'
-              },
-              {
-                title: 'Academic System',
-                description: 'Complete school management system for academic administration',
-                tags: ['React', 'Laravel', 'PostgreSQL', 'Real-time Features'],
-                demoUrl: 'https://demo-academic.devlab-amd.com',
-                icon: 'M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm0 0l9-5-9-5-9 5 9 5z',
-                bgColor: 'bg-purple-50',
-                iconColor: 'text-purple-600'
-              },
-              {
-                title: 'Quality Monitoring Dashboard',
-                description: 'Real-time quality monitoring system for university performance tracking and analytics',
-                tags: ['React', 'Laravel', 'MySQL', 'Chart', 'Real-time Analytics'],
-                demoUrl: 'https://demo-quality.devlab-amd.com',
-                icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-                bgColor: 'bg-orange-50',
-                iconColor: 'text-orange-600'
-              }
-            ].map((project, index) => (
+            {project.map((project, index) => (
               <div key={index} className="bg-bg rounded-xl shadow-sm hover:shadow-lg transition-all overflow-hidden card-hover">
-                <div className={`${project.bgColor} flex items-center justify-center h-48`}>
-                  <svg className={`w-24 h-24 ${project.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={project.icon}></path>
-                  </svg>
+                <div className="flex items-center justify-center h-48 overflow-hidden">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="w-full object-contain"
+                  />
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-text mb-4">{project.title}</h3>
@@ -326,7 +294,7 @@ const App = () => {
                     ))}
                   </div>
                   <a
-                    href={project.demoUrl}
+                    href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
