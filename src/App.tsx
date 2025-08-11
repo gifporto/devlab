@@ -334,7 +334,7 @@ const App = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {project.map((project, index) => (
               <CardContainer key={index} className="inter-var">
-                <CardBody className="bg-primary/10 relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                <CardBody className="bg-bg-secondary relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
                   <CardItem
                     translateZ="50"
                     className="text-xl font-bold text-text"

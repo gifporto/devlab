@@ -4,6 +4,7 @@
 :root {
   --color-primary: #0ea5e9;
   --color-bg: #ffffff;
+  --color-bg-secondary: #ececec;
   --color-text: #0f172a;
 }
 
@@ -11,6 +12,7 @@
 @theme {
   --color-primary: #0ea5e9;
   --color-bg: #ffffff;
+  --color-bg-secondary: #d6d6d6;
   --color-text: #0f172a;
 }
 
@@ -18,5 +20,6 @@
 .dark {
   --color-primary: #F4D160;
   --color-bg: #0f172a;
+  --color-bg-secondary: #0f172a;
   --color-text: #f8fafc;
 }
