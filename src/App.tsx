@@ -2,12 +2,35 @@ import { useState, useEffect } from 'react';
 import './index.css'
 import { HeroParallax } from './components/ui/hero-parallax.tsx'
 import project from './data/project.json'
-import { HeroHighlight } from './components/ui/hero-higlight.tsx';
+import { HeroHighlight, Highlight } from './components/ui/hero-higlight.tsx';
+
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavMenu,
+  MobileNavToggle,
+  NavbarLogo,
+  NavbarButton,
+  NavbarActions,
+} from "@/components/ui/resizable-navbar.tsx"
+
+
 
 const App = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isDark, setIsDark] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", link: "home" },
+    { name: "About", link: "about" },
+    { name: "Services", link: "services" },
+    { name: "Contact", link: "contact" },
+  ];
 
   // Handle scroll to update active section
   useEffect(() => {
@@ -65,162 +88,113 @@ const App = () => {
 
   return (
     <div className="bg-bg">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-bg backdrop-blur-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="text-2xl font-bold text-primary">DevLab</div>
-              <div className="ml-2 text-sm text-text"> AMDigital</div>
-            </div>
+      <Navbar>
+        <NavBody>
+          <NavbarLogo />
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="flex space-x-8">
-                {['home', 'about', 'services', 'portfolio', 'contact'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollTo(item)}
-                    className={`px-3 py-2 text-sm font-medium transition-colors relative
-    ${activeSection === item
-                        ? 'text-primary font-semibold border-b-2 border-primary'
-                        : 'text-text hover:text-primary border-b-2 border-transparent'
-                      }`}
-                  >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
-                  </button>
+          <NavItems
+            items={navItems}
+            onItemClick={() => setIsMobileMenuOpen(false)}
+            // override onClick di NavItems:
+            onItemClickCustom={(item) => {
+              scrollTo(item);
+              setIsMobileMenuOpen(false);
+            }}
+          />
 
-                ))}
-                <button
-                  onClick={toggleTheme}
-                  className="px-3 py-1 rounded-lg border border-gray-300"
-                >
-                  {isDark ? "☀️" : "🌙"}
-                </button>
-              </div>
-            </div>
+          <NavbarActions>
+            <NavbarButton
+              onClick={toggleTheme}
+              className="py-2 px-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              {isDark ? '🌞' : '🌙'}
+            </NavbarButton>
+          </NavbarActions>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-text hover:text-primary"
-              >
-                {!mobileMenuOpen ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
+        </NavBody>
 
-        {/* Mobile Navigation */}
-        <div className={`md:hidden bg-bg border-t border-gray-200 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {['home', 'about', 'services', 'portfolio', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  scrollTo(item);
-                  setMobileMenuOpen(false);
-                }}
-                className={`block px-3 py-2 text-base font-medium text-text hover:text-primary hover:bg-gray-50 w-full text-left ${activeSection === item ? 'text-primary' : ''
-                  }`}
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
+        <MobileNav visible>
+          <MobileNavHeader>
+            <NavbarLogo />
 
-      <HeroParallax products={project} />
+            <MobileNavToggle
+              isOpen={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+            />
+          </MobileNavHeader>
 
-      {/* Hero Section */}
-      <section id="home" className="pt-16 min-h-screen flex items-center">
+          <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
+            <NavItems
+              items={navItems}
+              onItemClick={() => setIsMobileMenuOpen(false)}
+              onItemClickCustom={(item) => {
+                scrollTo(item);
+                setIsMobileMenuOpen(false);
+              }}
+              className="flex flex-col space-y-4"
+            />
+
+          </MobileNavMenu>
+        </MobileNav>
+      </Navbar>
+
+      <section id="home">
+        <HeroParallax products={project} />
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20">
         <HeroHighlight>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div className="text-center">
-              <h1 className="text-5xl md:text-7xl font-bold text-text mb-6">
-                <span className="gradient-text">DevLab</span>
-                <br />
-                <span className="text-3xl md:text-4xl text-text">Adi Multi Digital</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-text mb-8 max-w-3xl mx-auto">
-                Your trusted software agent for developing and delivering custom systems and applications
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-text mb-4">About DevLab</h2>
+              <p className="text-xl text-text max-w-3xl mx-auto">
+                We are a specialized software development agency focused on creating innovative solutions
+                that drive business growth and digital transformation.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => scrollTo('portfolio')}
-                  className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/70 transition-colors inline-flex items-center justify-center"
-                >
-                  View Our Work
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-3xl font-bold text-text mb-6">Our Mission</h3>
+                <p className="text-text mb-6 leading-relaxed">
+                  <Highlight className='text-white'>At DevLab - Adi Multi Digital (AMD)</Highlight>, we bridge the gap between complex business requirements
+                  and cutting-edge technology solutions. Our team specializes in developing custom systems and
+                  applications that are tailored to meet your specific needs.
+                </p>
+                <p className="text-text leading-relaxed">
+                  We combine technical expertise with deep understanding of business processes to deliver
+                  solutions that not only work flawlessly but also drive real business value.
+                </p>
+
                 <button
                   onClick={() => scrollTo('contact')}
-                  className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-colors"
+                  className="mt-4 border-2 border-primary text-primary px-4 py-2 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-colors"
                 >
                   Get In Touch
                 </button>
               </div>
-            </div>
-          </div>
-        </HeroHighlight>
-      </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-text mb-4">About DevLab</h2>
-            <p className="text-xl text-text max-w-3xl mx-auto">
-              We are a specialized software development agency focused on creating innovative solutions
-              that drive business growth and digital transformation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold text-text mb-6">Our Mission</h3>
-              <p className="text-text mb-6 leading-relaxed">
-                At DevLab - Adi Multi Digital (AMD), we bridge the gap between complex business requirements
-                and cutting-edge technology solutions. Our team specializes in developing custom systems and
-                applications that are tailored to meet your specific needs.
-              </p>
-              <p className="text-text leading-relaxed">
-                We combine technical expertise with deep understanding of business processes to deliver
-                solutions that not only work flawlessly but also drive real business value.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl bg-primary/10">
-              <h4 className="text-2xl font-bold text-text mb-4">Our Expertise</h4>
-              <div className="space-y-3">
-                {[
-                  'Web & Mobile Technology',
-                  'System Security',
-                  'API Integration',
-                  'Cloud Services',
-                  'SaaS Solutions'
-                ].map((item) => (
-                  <div key={item} className="flex items-center">
-                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                    <span className="text-text">{item}</span>
-                  </div>
-                ))}
+              <div className="p-8 rounded-2xl bg-primary/10">
+                <h4 className="text-2xl font-bold text-text mb-4">Our Expertise</h4>
+                <div className="space-y-3">
+                  {[
+                    'Web & Mobile Technology',
+                    'System Security',
+                    'API Integration',
+                    'Cloud Services',
+                    'SaaS Solutions'
+                  ].map((item) => (
+                    <div key={item} className="flex items-center">
+                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                      <span className="text-text">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </HeroHighlight>
       </section>
 
       {/* Services Section */}
@@ -266,7 +240,7 @@ const App = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 bg-primary/10">
+      <section id="portfolio" className="py-20 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Our Portfolio</h2>
@@ -277,7 +251,7 @@ const App = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {project.map((project, index) => (
-              <div key={index} className="bg-bg rounded-xl shadow-sm hover:shadow-lg transition-all overflow-hidden card-hover">
+              <div key={index} className="bg-bg shadow-primary/15 outline-primary outline-1 rounded-xl shadow-sm hover:shadow-lg transition-all overflow-hidden card-hover">
                 <div className="flex items-center justify-center h-48 overflow-hidden">
                   <img
                     src={project.thumbnail}
@@ -297,7 +271,7 @@ const App = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/70 transition-colors text-sm font-medium"
                   >
                     View Demo
                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -312,7 +286,7 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-primary/30">
+      <section id="contact" className="py-20 bg-primary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Let's Work Together</h2>
@@ -390,7 +364,7 @@ const App = () => {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400 mb-2">DevLab</div>
+            <div className="text-3xl font-bold text-primary mb-2">DevLab</div>
             <div className="text-gray-400 mb-4">Adi Multi Digital (AMD)</div>
             <p className="text-gray-400 mb-8">
               Transforming ideas into powerful digital solutions
