@@ -14,21 +14,26 @@ import {
   MobileNavToggle,
   NavbarLogo,
   NavbarButton,
-  NavbarActions,
 } from "@/components/ui/resizable-navbar.tsx"
+
+import {
+  CardContainer,
+  CardBody,
+  CardItem,
+} from "@/components/ui/3d-card.tsx"
 
 
 
 const App = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const navItems = [
     { name: "Home", link: "home" },
     { name: "About", link: "about" },
     { name: "Services", link: "services" },
+    { name: "Portfolio", link: "portfolio" },
     { name: "Contact", link: "contact" },
   ];
 
@@ -100,16 +105,50 @@ const App = () => {
               scrollTo(item);
               setIsMobileMenuOpen(false);
             }}
+            activeSection={activeSection}
           />
 
-          <NavbarActions>
-            <NavbarButton
-              onClick={toggleTheme}
-              className="py-2 px-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              {isDark ? '🌞' : '🌙'}
-            </NavbarButton>
-          </NavbarActions>
+          <NavbarButton
+            onClick={toggleTheme}
+            className="py-2 px-3 rounded-full border border-primary bg-primary/20 hover:bg-primary/40 transition-colors"
+          >
+            {isDark ? (
+              // Icon matahari (sun) SVG
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-primary"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 1v2m0 18v2m11-11h-2M3 12H1m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+              </svg>
+            ) : (
+              // Icon bulan (moon) SVG
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-primary"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
+                />
+              </svg>
+            )}
+          </NavbarButton>
 
         </NavBody>
 
@@ -131,8 +170,51 @@ const App = () => {
                 scrollTo(item);
                 setIsMobileMenuOpen(false);
               }}
+              activeSection={activeSection}
               className="flex flex-col space-y-4"
             />
+
+            <NavbarButton
+              onClick={toggleTheme}
+              className="py-2 px-3 rounded-full border border-primary bg-primary/20 hover:bg-primary/40 transition-colors"
+            >
+              {isDark ? (
+                // Icon matahari (sun) SVG
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 1v2m0 18v2m11-11h-2M3 12H1m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              ) : (
+                // Icon bulan (moon) SVG
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
+                  />
+                </svg>
+              )}
+            </NavbarButton>
 
           </MobileNavMenu>
         </MobileNav>
@@ -143,7 +225,7 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
+      <section id="about" className="md:mb-20 mb-60">
         <HeroHighlight>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -249,39 +331,63 @@ const App = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
             {project.map((project, index) => (
-              <div key={index} className="bg-bg shadow-primary/15 outline-primary outline-1 rounded-xl shadow-sm hover:shadow-lg transition-all overflow-hidden card-hover">
-                <div className="flex items-center justify-center h-48 overflow-hidden">
-                  <img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className="w-full object-contain"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-text mb-4">{project.title}</h3>
-                  <p className="text-text mb-6">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-primary/5 text-primary text-sm rounded-full">{tag}</span>
-                    ))}
-                  </div>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/70 transition-colors text-sm font-medium"
+              <CardContainer key={index} className="inter-var">
+                <CardBody className="bg-primary/10 relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                  <CardItem
+                    translateZ="50"
+                    className="text-xl font-bold text-text"
                   >
-                    View Demo
-                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </a>
-                </div>
-              </div>
+                    {project.title}
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="text-gray-500 text-sm max-w-sm mt-2"
+                  >
+                    {project.description}
+                  </CardItem>
+                  <CardItem translateZ="100" className="w-full mt-4">
+                    <img
+                      src={project.thumbnail}
+                      height="1000"
+                      width="1000"
+                      className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                      alt="thumbnail"
+                    />
+                  </CardItem>
+                  <div className="flex justify-between items-center mt-20">
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href="https://twitter.com/mannupaaji"
+                      target="__blank"
+                      className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                    >
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tags.map((tag, i) => (
+                          <span key={i} className="px-3 py-1 bg-bg text-primary text-xs rounded-full">{tag}</span>
+                        ))}
+                      </div>
+                    </CardItem>
+                    <CardItem
+                      href={project.link}
+                      target="_blank"
+                      translateZ={20}
+                      as="button"
+                      className="px-4 py-2 rounded-xl bg-primary text-bg text-xs font-bold"
+                    >
+                      Demo
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
+
           </div>
+
+
         </div>
       </section>
 

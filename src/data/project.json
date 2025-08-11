@@ -58,5 +58,43 @@
     ],
     "link": "#",
     "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
+  },
+  
+  {
+    "title": "Academic System",
+    "description": "Complete school management system for academic administration",
+    "tags": [
+      "React",
+      "Laravel",
+      "PostgreSQL",
+      "Real-time Features"
+    ],
+    "link": "https://demo-academic.devlab-amd.com",
+    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
+  },
+  {
+    "title": "Quality Monitoring Dashboard",
+    "description": "Real-time quality monitoring system for university performance tracking and analytics",
+    "tags": [
+      "React",
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "https://demo-quality.devlab-amd.com",
+    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
+  },
+  {
+    "title": "Custom System Management",
+    "description": "Tailored management solutions for specific business requirements",
+    "tags": [
+      "Custom Stack",
+      "API Integration",
+      "Cloud Services",
+      "SaaS"
+    ],
+    "link": "#",
+    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
   }
 ]
