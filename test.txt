@@ -5,3 +5,5 @@ git commit -m "Build dan siap deploy"
 git push
 
 npm run deploy
+
+teset
