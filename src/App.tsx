@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import './index.css'
-import { HeroParallax } from './components/ui/hero-parallax.tsx'
-import project from './data/project.json'
+import { HeroParallax } from '@/components/ui/hero-parallax.tsx'
+import project from '@/data/project.json'
+import client from '@/data/client.json'
+import tech from '@/data/tech.json'
 import { HeroHighlight, Highlight } from './components/ui/hero-higlight.tsx';
+import { PinContainer } from './components/ui/3d-pin.tsx';
+import { HoverEffect } from './components/ui/card-hover-effect.tsx';
 
 import {
   Navbar,
@@ -22,7 +26,6 @@ import {
   CardItem,
 } from "@/components/ui/3d-card.tsx"
 
-import { HoverEffect } from './components/ui/card-hover-effect.tsx';
 
 const App = () => {
   const [isDark, setIsDark] = useState(false);
@@ -42,7 +45,7 @@ const App = () => {
     {
       title: 'Web Development',
       description: 'Custom web applications built with modern technologies and frameworks',
-      icon: 'M3 4h18v16H3z M3 7h18 M6 11h12 M6 14h8 M6 17h10'
+      icon: 'M9.00002 13C8.34002 13.33 7.79002 13.82 7.38002 14.43C7.15002 14.78 7.15002 15.22 7.38002 15.57C7.79002 16.18 8.34002 16.67 9.00002 17 M15.21 13C15.87 13.33 16.42 13.82 16.83 14.43C17.06 14.78 17.06 15.22 16.83 15.57C16.42 16.18 15.87 16.67 15.21 17 M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z M2.22998 8.01L21.45 8'
     },
     {
       title: 'Mobile Development',
@@ -245,14 +248,47 @@ const App = () => {
         <HeroParallax products={project} />
       </section>
 
+      {/* CLient Section */}
+      <section className='py-20'>
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-text mb-4">Our Client</h2>
+            <p className="text-xl text-text max-w-3xl mx-auto">
+              We have partnered with a diverse range of clients across industries, delivering tailored
+              solutions that meet their unique needs and help them achieve lasting success.
+            </p>
+
+          </div>
+          <div className="flex flex-wrap gap-4 justify-center">
+            {client.map((item, index) => (
+              <PinContainer
+                key={index}
+                title={item.title}
+                href={item.href}
+              >
+                {/* Container fix tinggi, lebar otomatis */}
+                <div className="h-24 min-w-24 flex items-center justify-center">
+                  <img
+                    src={item.image}
+                    className="h-full w-auto object-contain"
+                    alt={item.title}
+                  />
+                </div>
+              </PinContainer>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* About Section */}
-      <section id="about" className="md:mb-0 mb-60">
+      <section id="about" className="md:my-0 my-60">
         <HeroHighlight>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-text mb-4">About DevLab</h2>
               <p className="text-xl text-text max-w-3xl mx-auto">
-                We are a specialized software development agency focused on creating innovative solutions
+                We are a <Highlight>specialized software development</Highlight> agency focused on creating innovative solutions
                 that drive business growth and digital transformation.
               </p>
             </div>
@@ -261,7 +297,7 @@ const App = () => {
               <div>
                 <h3 className="text-3xl font-bold text-text mb-6">Our Mission</h3>
                 <p className="text-text mb-6 leading-relaxed">
-                  <Highlight className='text-white'>At DevLab - Adi Multi Digital (AMD)</Highlight>, we bridge the gap between complex business requirements
+                  At DevLab - Adi Multi Digital (AMD), we bridge the gap between complex business requirements
                   and cutting-edge technology solutions. Our team specializes in developing custom systems and
                   applications that are tailored to meet your specific needs.
                 </p>
@@ -305,13 +341,28 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Our Services</h2>
-            <p className="text-xl text-slate-500">
+            <p className="text-xl text-text">
               Comprehensive technology solutions for your business needs
             </p>
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <HoverEffect items={projects} />
+          </div>
+
+          <div className="text-center mb-16">
+            <h4 className="text-xl font-semibold text-text mb-8">Technologies Used</h4>
+            <div className='flex flex-wrap gap-4 justify-center'>
+              {tech.map((item, index) => (
+                <div key={index} className="h-10 min-w-[6rem] flex items-center justify-center">
+                  <img
+                    src={item.image}
+                    className="h-full w-auto object-contain"
+                    alt={item.title}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -352,7 +403,7 @@ const App = () => {
                       alt="thumbnail"
                     />
                   </CardItem>
-                  <div className="flex justify-between items-center mt-20">
+                  <div className="flex justify-between items-center mt-8">
                     <CardItem
                       translateZ={20}
                       className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
@@ -472,7 +523,7 @@ const App = () => {
       <footer className="bg-gray-900 text-white py-12" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">DevLab</div>
+            <div className="text-3xl font-bold text-white mb-2">DevLab</div>
             <div className="text-gray-400 mb-4">Adi Multi Digital (AMD)</div>
             <p className="text-gray-400 mb-8">
               Transforming ideas into powerful digital solutions

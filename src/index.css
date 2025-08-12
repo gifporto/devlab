@@ -2,7 +2,7 @@
 
 /* hanya untuk preview theme color */
 :root {
-  --color-primary: #0ea5e9;
+  --color-primary: #B13BFF;
   --color-bg: #ffffff;
   --color-bg-secondary: #ececec;
   --color-text: #0f172a;
@@ -10,7 +10,7 @@
 
 /* Variabel default */
 @theme {
-  --color-primary: #0ea5e9;
+  --color-primary: #B13BFF;
   --color-bg: #ffffff;
   --color-bg-secondary: #d6d6d6;
   --color-text: #0f172a;
@@ -18,7 +18,7 @@
 
 /* Variabel untuk dark mode */
 .dark {
-  --color-primary: #F4D160;
+  --color-primary: #16C79A;
   --color-bg: #0f172a;
   --color-bg-secondary: #0f172a;
   --color-text: #f8fafc;

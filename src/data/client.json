@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Biro Sistem Informasi UAD",
+        "href": "https://bsi.uad.ac.id/",
+        "image": "https://bsi.uad.ac.id/wp-content/uploads/logo-bsi-uad-biru.png"
+    },
+    {
+        "title": "Universitas Ahmad Dahlan",
+        "href": "https://uad.ac.id/",
+        "image": "https://uad.ac.id/wp-content/uploads/logo-warna.png"
+    },
+    {
+        "title": "Muhammadiyah",
+        "href": "https://id.wikipedia.org/wiki/Muhammadiyah",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/Muhammadiyah.svg"
+    },
+    {
+        "title": "SD Muhammadiyah Sapen",
+        "href": "https://www.sdmuhsapen-yog.sch.id/",
+        "image": "https://www.sdmuhsapen-yog.sch.id/assets/images/LOGO_SAPEN.png"
+    },
+    {
+        "title": "TWC",
+        "href": "https://injourneydestination.id/",
+        "image": "https://injourneydestination.id/wp-content/uploads/2021/11/Logo_TWC-IHM_2021-01-1-1024x496.png"
+    },
+    {
+        "title": "Tala Bumi Group",
+        "href": "https://talabumi.com/",
+        "image": "https://talabumi.com/uploads/section/talbum123.png"
+    },
+    {
+        "title": "HCM Petrokimia Gresik",
+        "href": "https://id.wikipedia.org/wiki/Petrokimia_Gresik",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Petrokimia_Gresik_logo.svg"
+    },
+    {
+        "title": "BBLabkes Palembang 1",
+        "href": "https://onelab.bblabkesmaspalembang.go.id/",
+        "image": "https://bblabkesmaspalembang.go.id/img/logo-kemenkes.webp"
+    },
+    {
+        "title": "UNISA",
+        "href": "https://dss.unisayogya.ac.id/",
+        "image": "https://dss.unisayogya.ac.id/assets/images/logo-unisa.png"
+    }
+]
