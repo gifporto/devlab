@@ -22,7 +22,7 @@ import {
   CardItem,
 } from "@/components/ui/3d-card.tsx"
 
-
+import { HoverEffect } from './components/ui/card-hover-effect.tsx';
 
 const App = () => {
   const [isDark, setIsDark] = useState(false);
@@ -35,6 +35,25 @@ const App = () => {
     { name: "Services", link: "services" },
     { name: "Portfolio", link: "portfolio" },
     { name: "Contact", link: "contact" },
+  ];
+
+
+  const projects = [
+    {
+      title: 'Web Development',
+      description: 'Custom web applications built with modern technologies and frameworks',
+      icon: 'M3 4h18v16H3z M3 7h18 M6 11h12 M6 14h8 M6 17h10'
+    },
+    {
+      title: 'Mobile Development',
+      description: 'Native and cross-platform mobile applications for iOS and Android',
+      icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z'
+    },
+    {
+      title: 'System Security',
+      description: 'Comprehensive security solutions to protect your digital assets',
+      icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+    }
   ];
 
   // Handle scroll to update active section
@@ -156,10 +175,54 @@ const App = () => {
           <MobileNavHeader>
             <NavbarLogo />
 
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen((open) => !open)}
-            />
+            <div className='flex items-center gap-2'>
+
+              <NavbarButton
+                onClick={toggleTheme}
+                className="py-2 px-3 rounded-full border border-primary bg-primary/20 hover:bg-primary/40 transition-colors"
+              >
+                {isDark ? (
+                  // Icon matahari (sun) SVG
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 1v2m0 18v2m11-11h-2M3 12H1m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                ) : (
+                  // Icon bulan (moon) SVG
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
+                    />
+                  </svg>
+                )}
+              </NavbarButton>
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
+              />
+            </div>
           </MobileNavHeader>
 
           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
@@ -174,48 +237,6 @@ const App = () => {
               className="flex flex-col space-y-4"
             />
 
-            <NavbarButton
-              onClick={toggleTheme}
-              className="py-2 px-3 rounded-full border border-primary bg-primary/20 hover:bg-primary/40 transition-colors"
-            >
-              {isDark ? (
-                // Icon matahari (sun) SVG
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-primary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 1v2m0 18v2m11-11h-2M3 12H1m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              ) : (
-                // Icon bulan (moon) SVG
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-primary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
-                  />
-                </svg>
-              )}
-            </NavbarButton>
-
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
@@ -225,7 +246,7 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="md:mb-20 mb-60">
+      <section id="about" className="md:mb-0 mb-60">
         <HeroHighlight>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -280,43 +301,17 @@ const App = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-primary/20">
+      <section id="services" className="py-20 bg-gradient-to-t from-bg via-primary/20 to-primary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-slate-500">
               Comprehensive technology solutions for your business needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Web Development',
-                description: 'Custom web applications built with modern technologies and frameworks',
-                icon: 'M3 4h18v16H3z M3 7h18 M6 11h12 M6 14h8 M6 17h10'
-              },
-              {
-                title: 'Mobile Development',
-                description: 'Native and cross-platform mobile applications for iOS and Android',
-                icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z'
-              },
-              {
-                title: 'System Security',
-                description: 'Comprehensive security solutions to protect your digital assets',
-                icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
-              }
-            ].map((service, index) => (
-              <div key={index} className="bg-bg p-8 rounded-xl shadow-sm hover:shadow-lg transition-all card-hover">
-                <div className="mb-6">
-                  <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={service.icon}></path>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-text mb-4">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            ))}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <HoverEffect items={projects} />
           </div>
         </div>
       </section>
@@ -334,7 +329,7 @@ const App = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {project.map((project, index) => (
               <CardContainer key={index} className="inter-var">
-                <CardBody className="bg-bg-secondary relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                <CardBody className="bg-bg relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
                   <CardItem
                     translateZ="50"
                     className="text-xl font-bold text-text"
@@ -360,22 +355,19 @@ const App = () => {
                   <div className="flex justify-between items-center mt-20">
                     <CardItem
                       translateZ={20}
-                      as="a"
-                      href="https://twitter.com/mannupaaji"
-                      target="__blank"
                       className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
                     >
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tags.map((tag, i) => (
-                          <span key={i} className="px-3 py-1 bg-bg text-primary text-xs rounded-full">{tag}</span>
+                          <span key={i} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">{tag}</span>
                         ))}
                       </div>
                     </CardItem>
                     <CardItem
                       href={project.link}
-                      target="_blank"
+                      as="a"
+                      target="__blank"
                       translateZ={20}
-                      as="button"
                       className="px-4 py-2 rounded-xl bg-primary text-bg text-xs font-bold"
                     >
                       Demo
@@ -384,15 +376,12 @@ const App = () => {
                 </CardBody>
               </CardContainer>
             ))}
-
           </div>
-
-
         </div>
-      </section>
+      </section >
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-primary/20">
+      <section id="contact" className="py-20 bg-gradient-to-b from-bg via-primary/20 to-primary/30" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Let's Work Together</h2>
@@ -401,33 +390,46 @@ const App = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
+          <div className="flex flex-col md:flex-row gap-8 w-full">
+            <div className='md:w-2/3'>
               <h3 className="text-2xl font-bold text-text mb-8">Get In Touch</h3>
               <div className="space-y-6">
+
+                {/* Email */}
                 <div className="flex items-center text-text">
                   <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
-                  <span>devlab@amdigital.id</span>
+                  <a href="mailto:devlab@amdigital.id" className="hover:underline">
+                    devlab@amdigital.id
+                  </a>
                 </div>
+
+                {/* Telepon */}
                 <div className="flex items-center text-text">
                   <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                   </svg>
-                  <span>+6281292888954 - Supriyanto (devlab manager)</span>
+                  <a href="https://wa.me/6281292888954?text=Halo%20saya%20ingin%20bertanya" className="hover:underline">
+                    +6281292888954 - Supriyanto (devlab manager)
+                  </a>
                 </div>
+
+                {/* Lokasi */}
                 <div className="flex items-center text-text">
                   <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
-                  <span>Yogyakarta, Indonesia</span>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    Yogyakarta, Indonesia
+                  </a>
                 </div>
+
               </div>
             </div>
 
-            <div className="bg-white backdrop-blur-sm p-8 rounded-xl">
+            <div className="bg-white md:w-1/3 backdrop-blur-sm p-8 rounded-xl">
               <div className="space-y-6">
                 <div>
                   <label className="block text-gray-700 text-sm font-medium mb-2">Name</label>
@@ -455,7 +457,7 @@ const App = () => {
                 </div>
                 <button
                   type="button"
-                  className="w-full bg-primary/10 text-primary py-3 px-6 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
+                  className="w-full bg-primary text-bg py-3 px-6 rounded-lg font-semibold hover:bg-primary/50 hover:text-white transition-colors"
                   onClick={() => alert('Contact form integration with your backend required')}
                 >
                   Send Message
@@ -467,7 +469,7 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-12" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="text-3xl font-bold text-primary mb-2">DevLab</div>
@@ -483,7 +485,7 @@ const App = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 };
 
