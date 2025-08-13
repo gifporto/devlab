@@ -1,6 +1,10 @@
 npm run build
 
 git add .
+git commit -m "TEST"
+git push origin main
+
+git add .
 git commit -m "Build dan siap deploy"
 git push
 
