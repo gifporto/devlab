@@ -107,7 +107,7 @@ export const Header = () => {
       <h1 className="text-5xl md:text-7xl font-bold text-text">
         <p className="text-primary">DevLab</p> AMDigital
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-text">
+      <p className="max-w-2xl text-base md:text-xl mt-8 text-text-secondary">
         Your trusted software agent for developing and delivering custom systems and applications
       </p>
     </div>

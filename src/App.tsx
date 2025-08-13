@@ -135,23 +135,11 @@ const App = () => {
             className="py-2 px-3 rounded-full border border-primary bg-primary/20 hover:bg-primary/40 transition-colors"
           >
             {isDark ? (
-              // Icon matahari (sun) SVG
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-primary"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 1v2m0 18v2m11-11h-2M3 12H1m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
               </svg>
             ) : (
               // Icon bulan (moon) SVG
@@ -185,23 +173,11 @@ const App = () => {
                 className="py-2 px-3 rounded-full border border-primary bg-primary/20 hover:bg-primary/40 transition-colors"
               >
                 {isDark ? (
-                  // Icon matahari (sun) SVG
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-primary"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 1v2m0 18v2m11-11h-2M3 12H1m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
                   </svg>
                 ) : (
                   // Icon bulan (moon) SVG
@@ -253,7 +229,7 @@ const App = () => {
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Our Client</h2>
-            <p className="text-xl text-text max-w-3xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
               We have partnered with a diverse range of clients across industries, delivering tailored
               solutions that meet their unique needs and help them achieve lasting success.
             </p>
@@ -287,7 +263,7 @@ const App = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-text mb-4">About DevLab</h2>
-              <p className="text-xl text-text max-w-3xl mx-auto">
+              <p className="text-xl text-text-secondary max-w-3xl mx-auto">
                 We are a <Highlight>specialized software development</Highlight> agency focused on creating innovative solutions
                 that drive business growth and digital transformation.
               </p>
@@ -296,12 +272,12 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-3xl font-bold text-text mb-6">Our Mission</h3>
-                <p className="text-text mb-6 leading-relaxed">
+                <p className="text-text-secondary mb-6 leading-relaxed">
                   At DevLab - Adi Multi Digital (AMD), we bridge the gap between complex business requirements
                   and cutting-edge technology solutions. Our team specializes in developing custom systems and
                   applications that are tailored to meet your specific needs.
                 </p>
-                <p className="text-text leading-relaxed">
+                <p className="text-text-secondary leading-relaxed">
                   We combine technical expertise with deep understanding of business processes to deliver
                   solutions that not only work flawlessly but also drive real business value.
                 </p>
@@ -314,8 +290,8 @@ const App = () => {
                 </button>
               </div>
 
-              <div className="p-8 rounded-2xl bg-primary/10">
-                <h4 className="text-2xl font-bold text-text mb-4">Our Expertise</h4>
+              <div className="p-8 rounded-2xl text-text bg-primary/10">
+                <h4 className="text-2xl font-bold mb-4">Our Expertise</h4>
                 <div className="space-y-3">
                   {[
                     'Web & Mobile Technology',
@@ -326,7 +302,7 @@ const App = () => {
                   ].map((item) => (
                     <div key={item} className="flex items-center">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      <span className="text-text">{item}</span>
+                      <span className="">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -341,7 +317,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Our Services</h2>
-            <p className="text-xl text-text">
+            <p className="text-xl text-text-secondary">
               Comprehensive technology solutions for your business needs
             </p>
           </div>
@@ -372,7 +348,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Our Portfolio</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-text-secondary">
               Successful projects that showcase our expertise and commitment
             </p>
           </div>
@@ -380,7 +356,7 @@ const App = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {project.map((project, index) => (
               <CardContainer key={index} className="inter-var">
-                <CardBody className="bg-bg relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                <CardBody className="bg-bg-secondary hover:shadow-2xl hover:shadow-primary/30 transition-all relative group/card border-primary w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
                   <CardItem
                     translateZ="50"
                     className="text-xl font-bold text-text"
@@ -390,7 +366,7 @@ const App = () => {
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-500 text-sm max-w-sm mt-2"
+                    className="text-text-secondary text-sm max-w-sm mt-2"
                   >
                     {project.description}
                   </CardItem>
@@ -436,7 +412,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-text mb-4">Let's Work Together</h2>
-            <p className="text-xl text-text">
+            <p className="text-xl text-text-secondary">
               Ready to transform your ideas into powerful digital solutions?
             </p>
           </div>
@@ -447,7 +423,7 @@ const App = () => {
               <div className="space-y-6">
 
                 {/* Email */}
-                <div className="flex items-center text-text">
+                <div className="flex items-center text-text-secondary">
                   <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
@@ -457,7 +433,7 @@ const App = () => {
                 </div>
 
                 {/* Telepon */}
-                <div className="flex items-center text-text">
+                <div className="flex items-center text-text-secondary">
                   <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                   </svg>
@@ -467,7 +443,7 @@ const App = () => {
                 </div>
 
                 {/* Lokasi */}
-                <div className="flex items-center text-text">
+                <div className="flex items-center text-text-secondary">
                   <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
