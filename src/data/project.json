@@ -8,7 +8,7 @@
       "Digital Certificates"
     ],
     "link": "https://demo-esign.devlab-amd.com",
-    "thumbnail": "https://i.pinimg.com/1200x/8e/e6/28/8ee628aa800a8c676e7cf792a2bbf6a4.jpg"
+    "thumbnail": "./project/UadSign.png"
   },
   {
     "title": "Tracer Study Survey",
@@ -20,7 +20,7 @@
       "Analytics Dashboard"
     ],
     "link": "https://demo-tracer.devlab-amd.com",
-    "thumbnail": "https://i.pinimg.com/1200x/44/81/52/4481522172422f1b04c71f583d561747.jpg"
+    "thumbnail": "./project/TracerStudy.png"
   },
   {
     "title": "Academic System",
@@ -45,7 +45,7 @@
       "Real-time Analytics"
     ],
     "link": "https://demo-quality.devlab-amd.com",
-    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
+    "thumbnail": "https://i.pinimg.com/1200x/e2/c6/6d/e2c66d2be55dbc8676d5948496b4646b.jpg"
   },
   {
     "title": "Custom System Management",
@@ -57,44 +57,6 @@
       "SaaS"
     ],
     "link": "#",
-    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
-  },
-  
-  {
-    "title": "Academic System",
-    "description": "Complete school management system for academic administration",
-    "tags": [
-      "React",
-      "Laravel",
-      "PostgreSQL",
-      "Real-time Features"
-    ],
-    "link": "https://demo-academic.devlab-amd.com",
-    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
-  },
-  {
-    "title": "Quality Monitoring Dashboard",
-    "description": "Real-time quality monitoring system for university performance tracking and analytics",
-    "tags": [
-      "React",
-      "Laravel",
-      "MySQL",
-      "Chart",
-      "Real-time Analytics"
-    ],
-    "link": "https://demo-quality.devlab-amd.com",
-    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
-  },
-  {
-    "title": "Custom System Management",
-    "description": "Tailored management solutions for specific business requirements",
-    "tags": [
-      "Custom Stack",
-      "API Integration",
-      "Cloud Services",
-      "SaaS"
-    ],
-    "link": "#",
-    "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
+    "thumbnail": "https://i.pinimg.com/1200x/08/49/a3/0849a3305658a58153934bd32a4b427f.jpg"
   }
 ]

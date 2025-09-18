@@ -1,69 +1,28 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="public/logo.svg" alt="Logo" width="120" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🌐 Web Profile
 
-Currently, two official plugins are available:
+Proyek **Web Profile** ini adalah website pribadi/portofolio yang menampilkan informasi tentang diri, keahlian, pengalaman, serta projek-projek yang pernah dikerjakan. Website ini dapat digunakan sebagai sarana memperkenalkan diri secara profesional.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Fitur Utama
+- **Halaman Home** — Menampilkan ringkasan profil singkat dan foto.
+- **Tentang Saya** — Informasi detail tentang latar belakang, pendidikan, dan pengalaman.
+- **Keahlian** — Daftar skill yang dimiliki.
+- **Portofolio** — Showcase projek-projek yang pernah dikerjakan.
+- **Kontak** — Formulir atau link untuk menghubungi.
+- **Responsif** — Tampilan optimal di perangkat desktop maupun mobile.
+- **Dark Mode** (opsional jika diaktifkan).
 
-## Expanding the ESLint configuration
+## 🛠️ Teknologi yang Digunakan
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Framework CSS**: Bootstrap 5 / Tailwind CSS *(pilih sesuai yang digunakan)*
+- **Backend**: (Jika ada, contoh: Laravel 10 / CodeIgniter 3)
+- **Library/Plugin**: (Contoh: Flowbite, Font Awesome, AOS Animation)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Instalasi
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone repositori ini**
+   ```bash
+   git clone https://github.com/username/web-profile.git
