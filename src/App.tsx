@@ -95,26 +95,34 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Saat load, cek mode sebelumnya di localStorage
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    }
+    // Cek tema browser saat load pertama
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDark(prefersDark);
+    document.documentElement.classList.toggle("dark", prefersDark);
+
+    // Listener kalau user ganti tema sistem
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDark(e.matches);
+      document.documentElement.classList.toggle("dark", e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
 
   const toggleTheme = () => {
     setIsDark(!isDark);
     if (!isDark) {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
     }
   };
 
   return (
-    <div className="bg-bg">
+    <body className="bg-bg">
       <Navbar>
         <NavBody>
           <NavbarLogo />
@@ -510,7 +518,7 @@ const App = () => {
           </div>
         </div>
       </footer>
-    </div >
+    </body >
   );
 };
 

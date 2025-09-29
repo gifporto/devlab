@@ -1,5 +1,43 @@
 [
   {
+    "title": "SuperSapen",
+    "description": "Registration, new student enrollment, and payment at SD Muhammadiyah Sapen.",
+    "tags": [
+      "React",
+      "Vue",
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "https://supersapen.com",
+    "thumbnail": "./project/web-superSapen.png"
+  },
+  {
+    "title": "Partnership UAD",
+    "description": "An integrated portal to manage and evaluate university partnerships UAD Campus.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "https://partnership.uad.ac.id/",
+    "thumbnail": "./project/web-partnership.png"
+  },
+  {
+    "title": "HKI UAD",
+    "description": "Providing intellectual property management services at UAD campus.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "https://ipr.uad.ac.id/",
+    "thumbnail": "./project/web-hki.png"
+  },
+  {
     "title": "E-Sign Application",
     "description": "Digital signature solution for secure document signing and verification",
     "tags": [
@@ -46,6 +84,42 @@
     ],
     "link": "https://demo-quality.devlab-amd.com",
     "thumbnail": "https://i.pinimg.com/1200x/e2/c6/6d/e2c66d2be55dbc8676d5948496b4646b.jpg"
+  },
+  {
+    "title": "Ethical Clearence",
+    "description": "Managing Ethical Clearance in the Faculty of Medicine.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "https://ipr.uad.ac.id/",
+    "thumbnail": "./project/web-ethicalClerance.png"
+  },
+  {
+    "title": "KlinikKmapus",
+    "description": "Website for requesting a doctor’s appointment on the UAD campus.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "https://klinik.uad.ac.id",
+    "thumbnail": "./project/web-klinikKampus.png"
+  },
+  {
+    "title": "WCU UAD",
+    "description": "Display graphs and rankings of UAD University's achievements.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Chart",
+      "Real-time Analytics"
+    ],
+    "link": "",
+    "thumbnail": "./project/web-wcu.png"
   },
   {
     "title": "Custom System Management",
