@@ -73,19 +73,6 @@
     "thumbnail": "https://i.pinimg.com/1200x/e0/d5/88/e0d5888c32f05dfe31ab9da38da83914.jpg"
   },
   {
-    "title": "Quality Monitoring Dashboard",
-    "description": "Real-time quality monitoring system for university performance tracking and analytics",
-    "tags": [
-      "React",
-      "Laravel",
-      "MySQL",
-      "Chart",
-      "Real-time Analytics"
-    ],
-    "link": "https://demo-quality.devlab-amd.com",
-    "thumbnail": "https://i.pinimg.com/1200x/e2/c6/6d/e2c66d2be55dbc8676d5948496b4646b.jpg"
-  },
-  {
     "title": "Ethical Clearence",
     "description": "Managing Ethical Clearance in the Faculty of Medicine.",
     "tags": [
